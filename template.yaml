@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 AWSTemplateFormatVersion: "2010-09-09"
 Description:  "This is my first template"
 Resources:
@@ -19,3 +20,26 @@ Resources:
       SecurityGroups:
         - !Ref MySecurityGroup
       InstanceType: t2.micro
+=======
+AWSTemplateFormatVersion: "2010-09-09"
+Description:  "This is my first template"
+Resources:
+  # Security Group Creation
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: "Allow SSH access"
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: "0.0.0.0/0"  # Allow SSH from anywhere  
+  MyEc2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-075449515af5df0d1
+      KeyName: !Ref MyKeyPair
+      SecurityGroups:
+        - !Ref MySecurityGroup
+      InstanceType: t2.micro
+>>>>>>> 2da123e4664141d4404e4049dffbe82885199a54
